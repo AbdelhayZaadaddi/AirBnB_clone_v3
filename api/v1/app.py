@@ -2,13 +2,16 @@
 """The main entry point for the ARBNB API"""
 
 from flask import Flask
+from flask_cors import CORS
 from api.v1.views import app_views
 from models import storage
 from os import getenv
 
-app = Flask(__name__)
 
+app = Flask(__name__)
 app.register_blueprint(app_views)
+CORS(app, resources={r"/*": {"origins": "0.0.0.0"}})
+
 
 @app.teardown_appcontext
 def teardown_appcontext(exception=None):

@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """The main entry point for the ARBNB API"""
 
+
 from flask import Flask, jsonify
 from flask_cors import CORS
 from api.v1.views import app_views
@@ -24,6 +25,7 @@ def teardown_appcontext(exception=None):
 def page_not_found(e):
     """Returns a JSON-formatted 404 response"""
     return jsonify({"error": "Not found"}), 404
+
 
 if __name__ == "__main__":
     HBNB_HOST = getenv("HBNB_API_HOST", "0.0.0.0")

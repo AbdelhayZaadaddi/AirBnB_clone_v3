@@ -20,7 +20,7 @@ def status():
 @app_views.route('/stats')
 def count():
     """return count of all classes in storage"""
-    return jsonfy({"amenity": storage.count("Amenities"),
+    return jsonify({"amenity": storage.count("Amenities"),
                "city": storage.count("Cities"),
                "place": storage.count("Places"),
                "review": storage.count("Reviews"),

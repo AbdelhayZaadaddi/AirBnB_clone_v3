@@ -1,30 +1,32 @@
 #!/usr/bin/python3
-"""The main entry point for the ARBNB API"""
+"""
+This file is the main entry point
+for the AirBnB clone version 3 API.
+"""
 
 
-from flask import Flask, jsonify
-from flask_cors import CORS
 from api.v1.views import app_views
-from models import storage
 from os import getenv
+from models import storage
+from flask import Flask, make_response, jsonify
+from flask_cors import CORS
+from flask import jsonify
 
-
-app = Flask(__name__)
-app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
+app = Flask('__name__')
 app.register_blueprint(app_views)
 CORS(app, resources={r"/*": {"origins": "0.0.0.0"}})
 
 
-@app.teardown_appcontext
-def teardown_appcontext(exception=None):
-    """Closes the storage"""
-    storage.close()
-
-
 @app.errorhandler(404)
-def page_not_found(e):
-    """Returns a JSON-formatted 404 response"""
+def notFound(err):
+    """ handler error 404 """
     return jsonify({"error": "Not found"}), 404
+
+
+@app.teardown_appcontext
+def teardown_db(exception=None):
+    """ Close the database """
+    storage.close()
 
 
 if __name__ == "__main__":

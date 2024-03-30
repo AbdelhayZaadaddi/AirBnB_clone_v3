@@ -21,12 +21,12 @@ def status():
 def count():
     """return count of all classes in storage"""
     alls = {}
-    classes = {"Amenity": "Amenities",
-               "City": "Cities",
-               "Place": "Places",
-               "Review": "Reviews",
-               "State": "States",
-               "User": "Users"}
+    classes = {"Amenity": "amenities",
+               "City": "cities",
+               "Place": "places",
+               "Review": "reviews",
+               "State": "states",
+               "User": "users"}
     for classx in classes:
         count = storage.count(classx)
         alls[classes.get(classx)] = count

@@ -16,7 +16,6 @@ def status():
     return jsonify(status)
 
 
-
 @app_views.route('/stats')
 def count():
     """return count of all classes in storage"""
@@ -29,5 +28,5 @@ def count():
                "user": "Users"}
     for classx in classes:
         count = storage.count(classx)
-        alls[classes.get(classx)] = count
+        alls[classes[classx]] = count
     return jsonify(alls)

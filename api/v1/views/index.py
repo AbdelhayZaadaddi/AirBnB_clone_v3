@@ -22,7 +22,7 @@ def count():
     """return count of all classes in storage"""
     alls = {}
     classes = {"Amenity": "amenities",
-               "Citie": "cities",
+               "City": "cities",
                "Place": "places",
                "Review": "reviews",
                "State": "states",

@@ -29,5 +29,5 @@ def count():
                "user": "Users"}
     for classx in classes:
         count = storage.count(classx)
-        alls[classes[classx]] = count
+        alls[classes.get(classx)] = count
     return jsonify(alls)

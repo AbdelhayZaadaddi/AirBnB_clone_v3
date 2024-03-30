@@ -20,9 +20,14 @@ def status():
 @app_views.route('/stats')
 def count():
     """return count of all classes in storage"""
-    return jsonify({"amenity": storage.count("Amenities"),
-               "city": storage.count("Cities"),
-               "place": storage.count("Places"),
-               "review": storage.count("Reviews"),
-               "state": storage.count("States"),
-               "user": storage.count("Users")})
+    alls = {}
+    classes = {"amenities": "Amenities",
+               "cities": "Cities",
+               "places": "Places",
+               "reviews": "Reviews",
+               "states": "States",
+               "users": "Users"}
+    for classx in classes:
+        count = storage.count(classx)
+        alls[classes.get(classx)] = count
+    return jsonify(alls)

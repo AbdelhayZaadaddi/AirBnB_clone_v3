@@ -15,13 +15,13 @@ def get_status():
 def count():
     """ Returns the count of all classes """
     alls = {}
-    classes = {"Amenity": "amenities",
+    """classes = {"Amenity": "amenities",
                 "City": "cities",
                 "Place": "places",
                 "Review": "reviews",
                 "State": "states",
                 "User": "users"}
-    for class_ in classes:
-        count = storage.count(class_)
-        alls[classes.get(class_)] = count
+"""
+    for key, value in classes.items():
+	alls[key] = storage.count(value)
     return jsonify(alls)

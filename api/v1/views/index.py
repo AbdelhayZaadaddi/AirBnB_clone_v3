@@ -16,7 +16,6 @@ def status():
     return jsonify(status)
 
 
-
 @app_views.route('/stats')
 def count():
     """return count of all classes in storage"""

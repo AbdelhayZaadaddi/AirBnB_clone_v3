@@ -11,7 +11,8 @@ from models.state import State
 from models.amenity import Amenity
 
 
-@app_views.route('/cities/<city_id>/places', methods=['GET'], strict_slashes=False)
+@app_views.route('/cities/<city_id>/places', methods=['GET'],
+                 strict_slashes=False)
 def get_places(city_id):
     """Get places"""
     city = storage.get(City, city_id)
@@ -21,7 +22,8 @@ def get_places(city_id):
     return jsonify(places)
 
 
-@app_views.route('/places/<place_id>', methods=['GET'], strict_slashes=False)
+@app_views.route('/places/<place_id>', methods=['GET'],
+                 strict_slashes=False)
 def get_place(place_id):
     """Get place"""
     place = storage.get(Place, place_id)
@@ -30,7 +32,8 @@ def get_place(place_id):
     return jsonify(place.to_dict())
 
 
-@app_views.route('/cities/<city_id>/places', methods=['POST'], strict_slashes=False)
+@app_views.route('/cities/<city_id>/places', methods=['POST'],
+                 strict_slashes=False)
 def post_place(city_id):
     """Post place"""
     city = storage.get(City, city_id)
@@ -52,7 +55,8 @@ def post_place(city_id):
     return jsonify(place.to_dict()), 201
 
 
-@app_views.route('/places/<place_id>', methods=['DELETE'], strict_slashes=False)
+@app_views.route('/places/<place_id>', methods=['DELETE'],
+                 strict_slashes=False)
 def delete_place(place_id):
     """Delete place"""
     place = storage.get(Place, place_id)
@@ -63,7 +67,8 @@ def delete_place(place_id):
     return jsonify({}), 200
 
 
-@app_views.route('/places/<place_id>', methods=['PUT'], strict_slashes=False)
+@app_views.route('/places/<place_id>', methods=['PUT'],
+                 strict_slashes=False)
 def put_place(place_id):
     """Updates a Place object"""
     place = storage.get(Place, place_id)
@@ -79,7 +84,8 @@ def put_place(place_id):
     return make_response(jsonify(place.to_dict()), 200)
 
 
-@app_views.route('/places_search', methods=['POST'], strict_slashes=False)
+@app_views.route('/places_search', methods=['POST'],
+                 strict_slashes=False)
 def post_places_search():
     """searches for a place"""
     if request.get_json() is not None:

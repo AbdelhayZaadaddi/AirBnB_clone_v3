@@ -84,4 +84,4 @@ class DBStorage:
         if cls:
             return len(self.all(cls))
         else:
-	    return sum(len(self.all(cls)) for cls in classes.values())
+            return sum(len(self.all(cls)) for cls in classes.values())

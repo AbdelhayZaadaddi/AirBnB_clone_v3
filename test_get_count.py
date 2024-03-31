@@ -1,12 +1,11 @@
 #!/usr/bin/python3
-"""Testing documentation of a module
+""" Test .get() and .count() methods
 """
-from importlib import import_module
-import sys
+from models import storage
+from models.state import State
 
-m_imported = import_module(sys.argv[1])
+print("All objects: {}".format(storage.count()))
+print("State objects: {}".format(storage.count(State)))
 
-if m_imported.__doc__ is None:
-    print("No module documentation", end="")
-else:
-    print("OK", end="")
+first_state_id = list(storage.all(State).values())[0].id
+print("First state: {}".format(storage.get(State, first_state_id)))
